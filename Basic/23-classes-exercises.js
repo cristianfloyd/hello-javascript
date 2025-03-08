@@ -54,9 +54,80 @@ Vídeo: https://youtu.be/1glVfFxj8a4?t=18630
   }
 
 // 7. Crea una clase que haga uso de getters y setters
+  class notebookLenovo extends notebook {
+    #color
+    #modelo
+    #disco
+    constructor(cpu,ram, pantalla, tamaño, modelo, color,disco) {
+      super(cpu,ram, pantalla, tamaño)
+      this.#modelo = modelo
+      this.#color = color
+      this.#disco = disco
+    }
 
-// 8. Modifica la clase con getters y setters para que use propiedades privadas
+    get modelo() {
+      return this.#modelo
+    }
+    get color() {
+      return this.#color
+    }
+    get disco() {
+      return this.#disco
+    }
+    set disco(value) {
+      this.#disco = value
+    }
+  }
+
+  let miNotebook = new notebookLenovo('i5',8,15,15,'IdeaPad 3', 'negro','256GB')
+  console.log(miNotebook.modelo)
+  console.log(miNotebook.color)
+  console.log(miNotebook.disco)
+  
+  
+  // 8. Modifica la clase con getters y setters para que use propiedades privadas
+  console.log('quiero cambiar el disco')
+  miNotebook.disco = '512GB'
+  console.log(miNotebook.disco)
+  console.log(miNotebook)
+
 
 // 9. Utiliza los get y set y muestra sus valores
+  console.log("Mi notebook es de color " + miNotebook.color + " y es modelo " + miNotebook.modelo)
+  console.log("tiene un disco de " + miNotebook.disco + " y planeo cambiarlo por un disco de 1TB")
+  miNotebook.disco = '1TB'
+  console.log(miNotebook.disco)
+
 
 // 10. Sobrescribe un método de una clase que utilice herencia 
+  class notebookHp extends notebook {
+    #modelo
+    #color
+    #disco
+    constructor(cpu,ram, pantalla, tamaño, modelo, color,disco) {
+      super(cpu,ram, pantalla, tamaño)
+      this.#modelo = modelo
+      this.#color = color
+      this.#disco = disco
+    }
+    get modelo() {
+      return this.#modelo
+    }
+    get color() {
+      return this.#color
+    }
+    get disco() {
+      return this.#disco
+    }
+    set disco(value) {
+      this.#disco = value
+    }
+    getInformacion() {
+      return `El modelo es ${this.#modelo}, el color es ${this.#color} y el disco es de ${this.#disco}`
+    }
+  }
+
+  let miNotebookHp = new notebookHp('i7',8,15,15,'think pad', 'gris','256GB')
+  console.log(miNotebookHp.getInformacion())
+  miNotebookHp.getInformacion = () => {return 'Notebook hp' }
+  console.log(miNotebookHp.getInformacion())
